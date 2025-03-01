@@ -51,7 +51,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 0;
-            this.txtEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            
             // 
             // txtPassword
             // 
@@ -67,7 +67,7 @@
             this.txtSmtpServer.Name = "txtSmtpServer";
             this.txtSmtpServer.Size = new System.Drawing.Size(100, 20);
             this.txtSmtpServer.TabIndex = 2;
-            this.txtSmtpServer.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+           
             // 
             // txtPort
             // 
@@ -92,7 +92,6 @@
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Email отправителя";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -111,7 +110,6 @@
             this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Адрес smtp сервера";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 

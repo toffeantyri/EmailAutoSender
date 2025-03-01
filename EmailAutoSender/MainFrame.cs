@@ -62,26 +62,6 @@ namespace EmailAutoSender
             Properties.Settings.Default.Save(); // Сохранение настроек
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void browseFile_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -151,7 +131,7 @@ namespace EmailAutoSender
                         lblStatus.Text = $"Отправлено {i + 1} из {emailData.Count} писем";
 
                         // Обновление статуса "Отправлено" в Excel
-                        UpdateSentStatus(excelFilePath, i, true);
+                        //UpdateSentStatus(excelFilePath, i, true);
 
                         progressBar1.Value++;
                     }
@@ -159,6 +139,7 @@ namespace EmailAutoSender
                     {
                         MessageBox.Show($"Ошибка при отправке на {data.Email}: {ex.Message}");
                     }
+                    UpdateSentStatus(excelFilePath, i, true);
                 }
             }
             if (emailData.Count != 0)
@@ -177,7 +158,7 @@ namespace EmailAutoSender
 
             try {
                 new FileInfo(filePath);
-            } catch(Exception ex) {
+            } catch(Exception) {
                 MessageBox.Show("Ошибка чтения файла Excel, неверный путь");
                 return new List<EmailData>();
             }
@@ -197,6 +178,7 @@ namespace EmailAutoSender
                     string email = worksheet.Cells[row, 1].Text; // Столбец "Email"
                     Console.WriteLine(email);
                     bool isSent = worksheet.Cells[row, 2].GetValue<bool>(); // Столбец "Отправлено"
+                    Console.WriteLine(isSent);
                     string sendFilePath = worksheet.Cells[row, 3].Text; // Столбец "Путь к файлу"
 
                     emailData.Add(new EmailData { Email = email, IsSent = isSent, FilePath = sendFilePath });
