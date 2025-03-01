@@ -38,8 +38,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.browseFile = new System.Windows.Forms.Button();
+            this.sendFilesToEmails = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtEmail
@@ -80,6 +82,7 @@
             this.txtExcelPath.Name = "txtExcelPath";
             this.txtExcelPath.Size = new System.Drawing.Size(279, 20);
             this.txtExcelPath.TabIndex = 4;
+            this.txtExcelPath.TextChanged += new System.EventHandler(this.txtExcelPath_TextChanged);
             // 
             // label1
             // 
@@ -128,33 +131,51 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Путь к Excel файлу";
             // 
-            // button1
+            // browseFile
             // 
-            this.button1.Location = new System.Drawing.Point(313, 146);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 20);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.browseFile.Location = new System.Drawing.Point(313, 146);
+            this.browseFile.Name = "browseFile";
+            this.browseFile.Size = new System.Drawing.Size(31, 20);
+            this.browseFile.TabIndex = 10;
+            this.browseFile.Text = "...";
+            this.browseFile.UseVisualStyleBackColor = true;
+            this.browseFile.Click += new System.EventHandler(this.browseFile_Click);
             // 
-            // button2
+            // sendFilesToEmails
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(12, 191);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(344, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Отправить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.sendFilesToEmails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sendFilesToEmails.Location = new System.Drawing.Point(12, 191);
+            this.sendFilesToEmails.Name = "sendFilesToEmails";
+            this.sendFilesToEmails.Size = new System.Drawing.Size(344, 30);
+            this.sendFilesToEmails.TabIndex = 11;
+            this.sendFilesToEmails.Text = "Отправить";
+            this.sendFilesToEmails.UseVisualStyleBackColor = true;
+            this.sendFilesToEmails.Click += new System.EventHandler(this.sendFilesToEmails_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(13, 228);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(343, 23);
+            this.progressBar1.TabIndex = 12;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(158, 254);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblStatus.TabIndex = 13;
             // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 305);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.sendFilesToEmails);
+            this.Controls.Add(this.browseFile);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -185,8 +206,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button browseFile;
+        private System.Windows.Forms.Button sendFilesToEmails;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
 
