@@ -22,6 +22,7 @@ namespace EmailAutoSender
         public MainFrame()
         {
             InitializeComponent();
+            LoadSettings();
         }
 
         private void MainFrame_Load(object sender, EventArgs e)
