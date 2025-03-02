@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using OfficeOpenXml;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace EmailAutoSender
 {
@@ -109,8 +110,9 @@ namespace EmailAutoSender
             // Отправка писем
             using (smtpClient as System.IDisposable)
             {
+                smtpClient.UseDefaultCredentials = false;
                 smtpClient.EnableSsl = true;
-                smtpClient.Credentials = new NetworkCredential(email, password);
+                smtpClient.Credentials = new System.Net.NetworkCredential(email, password);
 
                 for (int i = 0; i < emailData.Count; i++)
                 {
@@ -120,26 +122,30 @@ namespace EmailAutoSender
                     if (data.IsSent)
                     {
                         progressBar1.Value++;
-                        lblStatus.Text = $"Пропуск {data.Email} (уже отправлено)";
+                       
+                        lblStatus.Text += $"Пропуск {data.Email} (уже отправлено) \n";
                         continue;
                     }
 
                     try
                     {
                         // Отправка письма с вложением
-                        SendEmail(smtpClient, data.Email, "Тема письма", "Текст письма", data.FilePath);
+                        
+                        SendEmail(smtpClient, data.Email, "Тема письма", "Текст письма", data.FilePath,email, password);
                         lblStatus.Text = $"Отправлено {i + 1} из {emailData.Count} писем";
 
                         // Обновление статуса "Отправлено" в Excel
-                        //UpdateSentStatus(excelFilePath, i, true);
+                        UpdateSentStatus(excelFilePath, i, true);
 
-                        progressBar1.Value++;
+                        //progressBar1.Value++;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Ошибка при отправке на {data.Email}: {ex.Message}");
+                      
                     }
-                    UpdateSentStatus(excelFilePath, i, true);
+                   
+                    progressBar1.Value++;
                 }
             }
             if (emailData.Count != 0)
@@ -207,7 +213,7 @@ namespace EmailAutoSender
         }
 
         // Отправка письма
-        private void SendEmail(SmtpClient smtpClient, string toEmail, string subject, string body, string attachmentPath)
+        private void SendEmail(SmtpClient smtpClient, string toEmail, string subject, string body, string attachmentPath, string email, string password)
         {
             using (MailMessage mailMessage = new MailMessage())
             {
@@ -222,9 +228,10 @@ namespace EmailAutoSender
                     Attachment attachment = new Attachment(attachmentPath);
                     mailMessage.Attachments.Add(attachment);
                 }
-
                 // Отправка
                 smtpClient.Send(mailMessage);
+                                   
+                
             }
         }
 

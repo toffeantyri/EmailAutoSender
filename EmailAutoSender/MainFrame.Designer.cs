@@ -51,7 +51,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 0;
-            
             // 
             // txtPassword
             // 
@@ -67,7 +66,6 @@
             this.txtSmtpServer.Name = "txtSmtpServer";
             this.txtSmtpServer.Size = new System.Drawing.Size(100, 20);
             this.txtSmtpServer.TabIndex = 2;
-           
             // 
             // txtPort
             // 
@@ -160,7 +158,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(158, 254);
+            this.lblStatus.Location = new System.Drawing.Point(12, 254);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 13;
