@@ -2,6 +2,7 @@
 Dont to see code. <br />
 Imperative style code. <br />
 Shame. <br />
+Success tested with stmp.mail.ru <br />
 <br />
 Интерфейс
 <br />
